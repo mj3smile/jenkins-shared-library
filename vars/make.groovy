@@ -22,9 +22,9 @@ def call(String type) {
         }
     }
 	
-	echo 'make ' + type
 	switch(type) {
 		case 'build':
+			echo 'make ' + type
 	    	archs = [:]
 			arch.each { name, state ->
 				if (state) {
@@ -39,6 +39,7 @@ def call(String type) {
 			break
 		
 		case 'deploy':
+			echo 'make ' + type
 			clusters = [:]
 			cluster.each { name, state ->
 				if (state) {
@@ -50,6 +51,10 @@ def call(String type) {
 			return {
 				parallel clusters
 			}
+			break
+
+		default:
+			echo 'invalid type argument for "make" function'
 			break
 	}
 }
