@@ -1,32 +1,28 @@
 def call(String type) {
 	switch(type) {
 		case 'build':
-			parallel (
-				'stage 1 build': {
-					steps {
+			script {
+				parallel (
+					'stage 1 build': {
 						echo 'stage 1'
 					}
-				}
-				'stage 2 build': {
-					steps {
+					'stage 2 build': {
 						echo 'stage 2'
 					}
-				}
-			).call()
+				).call()
+			}
 			break
 		case 'deploy':
-			parallel (
-				'stage 1 deploy': {
-					steps {
+			script {
+				parallel (
+					'stage 1 deploy': {
 						echo 'stage 1'
 					}
-				}
-				'stage 2 deploy': {
-					steps {
+					'stage 2 deploy': {
 						echo 'stage 2'
 					}
-				}
-			).call()
+				).call()
+			}
 			break
 	}
 }
