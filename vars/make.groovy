@@ -4,10 +4,10 @@ def call(String type) {
 			script {
 				parallel (
 					'stage 1 build': {
-						echo 'stage 1'
-					}
+						echo 'stage 1 build'
+					},
 					'stage 2 build': {
-						echo 'stage 2'
+						echo 'stage 2 build'
 					}
 				).call()
 			}
@@ -16,10 +16,10 @@ def call(String type) {
 			script {
 				parallel (
 					'stage 1 deploy': {
-						echo 'stage 1'
-					}
+						echo 'stage 1 deploy'
+					},
 					'stage 2 deploy': {
-						echo 'stage 2'
+						echo 'stage 2 deploy'
 					}
 				).call()
 			}
