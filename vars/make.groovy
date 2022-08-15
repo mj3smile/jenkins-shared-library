@@ -24,34 +24,17 @@ def call(String type) {
 	
 	switch(type) {
 		case 'build':
-		    if (arch.arm && !arch.x86) {
-		    	return {
-					parallel (
-						'arm': {
-							echo 'do build arm'
-						}
-					)
+	    	archs = [:]
+			arch.each { name, state ->
+				if (state) {
+					archs["${name}"] = {
+						echo "do build ${name}"
+					}
 				}
-		    } else if (!arch.arm && arch.x86) {
-		    	return {
-					parallel (
-						'x86': {
-							echo 'do build x86'
-						}
-					)
-				}
-	    	} else {
-	    		return {
-					parallel (
-						'arm': {
-							echo 'do build arm'
-						},
-						'x86': {
-							echo 'do build x86'
-						}
-					)
-				}
-	    	}
+			}
+			return {
+				parallel archs
+			}
 			break
 		
 		case 'deploy':
