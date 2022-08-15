@@ -57,7 +57,7 @@ def call(String type) {
 		case 'deploy':
 			clusters = [:]
 			cluster.each { name, state ->
-				if state {
+				if (state) {
 					clusters['${name}'] = {
 						echo 'do deploy to ${name} cluster'
 					}
