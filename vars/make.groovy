@@ -22,6 +22,7 @@ def call(String type) {
         }
     }
 	
+	echo 'make ' + type
 	switch(type) {
 		case 'build':
 	    	archs = [:]
