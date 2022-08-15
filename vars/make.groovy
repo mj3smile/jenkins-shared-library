@@ -50,5 +50,12 @@ def call(String type) {
 				parallel clusters
 			}
 			break
+
+		default:
+			none = [:]
+			return {
+				parallel none
+			}
+			break
 	}
 }
