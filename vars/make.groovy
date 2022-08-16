@@ -40,12 +40,15 @@ def call(String type) {
 		
 		case 'deploy':
 			echo 'make ' + type
+			action = [
+				polling: deployPolling(),
+				development: deployDevelopment()
+			]
+
 			clusters = [:]
 			cluster.each { name, state ->
 				if (state) {
-					clusters["${name}"] = {
-						echo "do deploy to ${name} cluster"
-					}
+					clusters["${name}"] = action[name]
 				}
 			}
 			return {
