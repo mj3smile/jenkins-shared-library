@@ -13,7 +13,6 @@ def call(String type) {
         }
 
         def serviceCluster = s.getAt('cluster')
-        echo 'hasil scan: ' + serviceCluster
         if (serviceCluster == 'development' && !cluster.development) {
             cluster.development = true
         } else if (serviceCluster == 'polling' && !cluster.polling) {
@@ -49,6 +48,7 @@ def call(String type) {
 			clusters = [:]
 			cluster.each { name, state ->
 				if (state) {
+					echo "cluster ${name} == ${state}"
 					clusters["${name}"] = action[name]
 				}
 			}
