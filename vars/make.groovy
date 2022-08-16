@@ -42,13 +42,13 @@ def call(String type) {
 			echo 'make ' + type
 			action = [
 				polling: deployPolling(),
-				development: deployDevelopment()
+				development: deployDevelopment(),
+				api: deployDevelopment()
 			]
 
 			clusters = [:]
 			cluster.each { name, state ->
 				if (state) {
-					echo "cluster ${name} == ${state}"
 					clusters["${name}"] = action[name]
 				}
 			}
