@@ -41,9 +41,9 @@ def call(String type) {
 		case 'deploy':
 			echo 'make ' + type
 			action = [
-				polling: deployPolling(),
-				development: deployDevelopment(),
-				api: deployDevelopment()
+				polling: {deployPolling()},
+				development: {deployDevelopment()},
+				api: {deployApi()}
 			]
 
 			clusters = [:]
