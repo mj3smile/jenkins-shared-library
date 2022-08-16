@@ -13,6 +13,7 @@ def call(String type) {
         }
 
         def serviceCluster = s.getAt('cluster')
+        echo 'hasil scan: ' + serviceCluster
         if (serviceCluster == 'development' && !cluster.development) {
             cluster.development = true
         } else if (serviceCluster == 'polling' && !cluster.polling) {
