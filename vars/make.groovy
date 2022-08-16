@@ -25,12 +25,15 @@ def call(String type) {
 	switch(type) {
 		case 'build':
 			echo 'make ' + type
+			action = [
+				arm: {buildArm()},
+				x86: {build_x86()}
+			]
+
 	    	archs = [:]
 			arch.each { name, state ->
 				if (state) {
-					archs["${name}"] = {
-						echo "do build ${name}"
-					}
+					archs["${name}"] = action[name]
 				}
 			}
 			return {
