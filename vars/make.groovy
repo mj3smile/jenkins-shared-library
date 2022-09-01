@@ -44,7 +44,7 @@ def call(String type) {
 		case 'deploy':
 			echo 'make ' + type
 			action = [
-				polling: {deployPolling()},
+				polling: {withCredentials([string(credentialsId: 'ENV_GPG_PASSPHRASE', variable: 'ENV_GPG_PASSPHRASE')]) {deployPolling()}},
 				development: {deployDevelopment()},
 				api: {deployApi()}
 			]
