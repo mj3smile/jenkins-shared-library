@@ -45,8 +45,8 @@ def call(String type) {
 			echo 'make ' + type
 			action = [
 				polling: {withCredentials([string(credentialsId: 'ENV_GPG_PASSPHRASE', variable: 'ENV_GPG_PASSPHRASE')]) {deployPolling()}},
-				development: {deployDevelopment()},
-				api: {deployApi()}
+				development: {withCredentials([string(credentialsId: 'ENV_GPG_PASSPHRASE', variable: 'ENV_GPG_PASSPHRASE')]) {deployDevelopment()}},
+				api: {withCredentials([string(credentialsId: 'ENV_GPG_PASSPHRASE', variable: 'ENV_GPG_PASSPHRASE')]) {deployApi()}}
 			]
 
 			clusters = [:]
