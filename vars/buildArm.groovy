@@ -1,3 +1,3 @@
 def call() {
-	sh './forstok build --arch arm'
+	sh 'ssh mj@127.0.0.1 \'forstok build --arch arm\''
 }
