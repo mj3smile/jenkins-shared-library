@@ -1,3 +1,3 @@
 def call() {
-	echo "do deploy to api cluster."
+	sh 'forstok deploy --cluster api'
 }
