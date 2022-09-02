@@ -1,3 +1,3 @@
 def call() {
-	sh 'forstok build --arch arm'
+	sh './forstok build --arch arm'
 }
