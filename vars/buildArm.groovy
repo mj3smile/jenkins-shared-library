@@ -1,3 +1,3 @@
 def call() {
-	echo "do build arm."
+	sh 'forstok build --arch arm'
 }
