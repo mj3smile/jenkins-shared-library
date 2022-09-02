@@ -1,3 +1,5 @@
 def call() {
-	sh 'forstok build --arch x86'
+	node('host') {
+		sh 'forstok build --arch x86'
+	}
 }
